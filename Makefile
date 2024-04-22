@@ -1,5 +1,5 @@
 test:
-	pytest --numprocesses=auto --dist=loadscope
+	pytest --numprocesses=auto
 
 coverage:
 	pytest --cov
