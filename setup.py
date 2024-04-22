@@ -2,7 +2,8 @@ from setuptools import setup, find_packages
 
 test_packages = [
     "pytest>=5.4.3",
-    "pytest-cov>=2.6.1"
+    "pytest-cov>=2.6.1",
+    "pytest-xdist>=3.5.0"
 ]
 
 docs_packages = [
