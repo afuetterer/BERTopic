@@ -28,4 +28,4 @@ jobs:
         python -m pip install --upgrade pip 
         pip install -e ".[test]"
     - name: Run Checking Mechanisms
-      run: make check
+      run: pytest --cov --numprocesses=auto --dist=loadscope

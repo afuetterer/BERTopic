@@ -4,6 +4,9 @@ test:
 coverage:
 	pytest --cov
 
+test-parallel:
+	pytest --cov --numprocesses=auto --dist=loadscope
+
 format:
 	ruff format
 
