@@ -580,7 +580,7 @@ class BERTopic:
             )
 
         # Transform without hdbscan_model and umap_model using only cosine similarity
-        elif type(self.hdbscan_model) == BaseCluster:
+        elif type(self.hdbscan_model) is BaseCluster:
             logger.info("Predicting topic assignments through cosine similarity of topic and document embeddings.")
             sim_matrix = cosine_similarity(embeddings, np.array(self.topic_embeddings_))
             predictions = np.argmax(sim_matrix, axis=1) - self._outliers
@@ -684,9 +684,7 @@ class BERTopic:
         # Checks
         check_embeddings_shape(embeddings, documents)
         if not hasattr(self.hdbscan_model, "partial_fit"):
-            raise ValueError(
-                "In order to use `.partial_fit`, the cluster model should have " "a `.partial_fit` function."
-            )
+            raise ValueError("In order to use `.partial_fit`, the cluster model should have a `.partial_fit` function.")
 
         # Prepare documents
         if isinstance(documents, str):
@@ -1524,7 +1522,7 @@ class BERTopic:
 
         if top_n_words > 100:
             logger.warning(
-                "Note that extracting more than 100 words from a sparse " "can slow down computation quite a bit."
+                "Note that extracting more than 100 words from a sparse can slow down computation quite a bit."
             )
         self.top_n_words = top_n_words
         self.vectorizer_model = vectorizer_model or CountVectorizer(ngram_range=n_gram_range)
@@ -2007,7 +2005,7 @@ class BERTopic:
                 custom_labels = topic_labels
             else:
                 raise ValueError(
-                    "Make sure that `topic_labels` contains the same number " "of labels as there are topics."
+                    "Make sure that `topic_labels` contains the same number of labels as there are topics."
                 )
 
         self.custom_labels_ = custom_labels
@@ -2124,9 +2122,7 @@ class BERTopic:
                 for topic in topic_group:
                     mapping[topic] = topic_group[0]
         else:
-            raise ValueError(
-                "Make sure that `topics_to_merge` is either" "a list of topics or a list of list of topics."
-            )
+            raise ValueError("Make sure that `topics_to_merge` is eithera list of topics or a list of list of topics.")
 
         # Track mappings and sizes of topics for merging topic embeddings
         mappings = defaultdict(list)
@@ -3565,7 +3561,7 @@ class BERTopic:
 
         # Replace embedding model if one is specifically chosen
         verbose = any([model.verbose for model in models])
-        if embedding_model is not None and type(merged_model.embedding_model) == BaseEmbedder:
+        if embedding_model is not None and type(merged_model.embedding_model) is BaseEmbedder:
             merged_model.embedding_model = select_backend(embedding_model, verbose=verbose)
         return merged_model
 
