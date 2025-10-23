@@ -33,7 +33,7 @@ def reduced_embeddings(document_embeddings):
     return reduced_embeddings
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def documents():
     newsgroup_docs = fetch_20newsgroups(subset="all", remove=("headers", "footers", "quotes"))["data"][:1000]
     return newsgroup_docs
