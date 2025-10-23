@@ -49,8 +49,7 @@ jobs:
       run: |
         from sklearn.datasets import fetch_20newsgroups
         fetch_20newsgroups(subset="all", remove=("headers", "footers", "quotes"))
-
     - run: ls -l ~/scikit_learn_data/
 
     - name: Run Checking Mechanisms
-      run: pytest --numprocesses=2 --dist=loadscope
+      run: pytest --numprocesses=2 # --dist=loadscope
