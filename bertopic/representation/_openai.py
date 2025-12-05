@@ -3,7 +3,8 @@ import openai
 import pandas as pd
 from tqdm import tqdm
 from scipy.sparse import csr_matrix
-from typing import Mapping, List, Tuple, Any, Union, Callable
+from typing import Any, Union
+from collections.abc import Mapping, Callable
 from bertopic.representation._base import BaseRepresentation
 from bertopic.representation._utils import (
     retry_with_exponential_backoff,
@@ -184,8 +185,8 @@ class OpenAI(BaseRepresentation):
         topic_model,
         documents: pd.DataFrame,
         c_tf_idf: csr_matrix,
-        topics: Mapping[str, List[Tuple[str, float]]],
-    ) -> Mapping[str, List[Tuple[str, float]]]:
+        topics: Mapping[str, list[tuple[str, float]]],
+    ) -> Mapping[str, list[tuple[str, float]]]:
         """Extract topics.
 
         Arguments:

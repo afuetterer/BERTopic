@@ -2,7 +2,8 @@ import pandas as pd
 from tqdm import tqdm
 from scipy.sparse import csr_matrix
 from llama_cpp import Llama
-from typing import Mapping, List, Tuple, Any, Union, Callable
+from typing import Any, Union
+from collections.abc import Mapping, Callable
 from bertopic.representation._base import BaseRepresentation
 from bertopic.representation._utils import truncate_document, validate_truncate_document_parameters
 
@@ -151,8 +152,8 @@ class LlamaCPP(BaseRepresentation):
         topic_model,
         documents: pd.DataFrame,
         c_tf_idf: csr_matrix,
-        topics: Mapping[str, List[Tuple[str, float]]],
-    ) -> Mapping[str, List[Tuple[str, float]]]:
+        topics: Mapping[str, list[tuple[str, float]]],
+    ) -> Mapping[str, list[tuple[str, float]]]:
         """Extract topic representations and return a single label.
 
         Arguments:

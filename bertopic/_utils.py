@@ -4,7 +4,7 @@ import logging
 from collections.abc import Iterable
 from scipy.sparse import csr_matrix
 from scipy.spatial.distance import squareform
-from typing import Optional, Union, Tuple, Any
+from typing import Optional, Union, Any
 
 
 class MyLogger:
@@ -142,7 +142,7 @@ def validate_distance_matrix(X, n_samples):
             "distance matrix of shape (n*(n-1)/2,) or a "
             "2-D square distance matrix of shape (n, n)."
             "where n is the number of documents."
-            "Got a distance matrix of shape %s" % str(s)
+            f"Got a distance matrix of shape {s!s}"
         )
 
     # Make sure its entries are non-negative
@@ -181,7 +181,7 @@ def select_topic_representation(
     embeddings: Optional[Union[np.ndarray, csr_matrix]] = None,
     use_ctfidf: bool = True,
     output_ndarray: bool = False,
-) -> Tuple[np.ndarray, bool]:
+) -> tuple[np.ndarray, bool]:
     """Select the topic representation.
 
     Arguments:

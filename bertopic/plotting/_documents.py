@@ -2,13 +2,13 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from typing import List, Union
+from typing import Union
 
 
 def visualize_documents(
     topic_model,
-    docs: List[str],
-    topics: List[int] | None = None,
+    docs: list[str],
+    topics: list[int] | None = None,
     embeddings: np.ndarray = None,
     reduced_embeddings: np.ndarray = None,
     sample: float | None = None,

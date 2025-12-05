@@ -3,14 +3,14 @@ import pandas as pd
 import plotly.graph_objects as go
 import math
 
-from typing import List, Union
+from typing import Union
 
 
 def visualize_hierarchical_documents(
     topic_model,
-    docs: List[str],
+    docs: list[str],
     hierarchical_topics: pd.DataFrame,
-    topics: List[int] | None = None,
+    topics: list[int] | None = None,
     embeddings: np.ndarray = None,
     reduced_embeddings: np.ndarray = None,
     sample: Union[float, int] | None = None,

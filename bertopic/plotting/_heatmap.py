@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List, Union
+from typing import Union
 from scipy.cluster.hierarchy import fcluster, linkage
 from sklearn.metrics.pairwise import cosine_similarity
 from bertopic._utils import select_topic_representation
@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 
 def visualize_heatmap(
     topic_model,
-    topics: List[int] | None = None,
+    topics: list[int] | None = None,
     top_n_topics: int | None = None,
     n_clusters: int | None = None,
     use_ctfidf: bool = False,
