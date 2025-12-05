@@ -452,7 +452,7 @@ def save_topics(model, path: str):
 
 def load_cfg_from_json(json_file: Union[str, os.PathLike]):
     """Load configuration from json."""
-    with open(json_file, "r", encoding="utf-8") as reader:
+    with open(json_file, encoding="utf-8") as reader:
         text = reader.read()
     return json.loads(text)
 
@@ -463,7 +463,7 @@ class NumpyEncoder(json.JSONEncoder):
             return int(obj)
         if isinstance(obj, np.floating):
             return float(obj)
-        return super(NumpyEncoder, self).default(obj)
+        return super().default(obj)
 
 
 def get_package_versions():
